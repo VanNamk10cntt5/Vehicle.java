@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class Vehicle {
+    private String model;
+    private int cylinderCapacity;
+    private double value;
+
+    public Vehicle(String model, int cylinderCapacity, double value) {
+        this.model = model;
+        this.cylinderCapacity = cylinderCapacity;
+        this.value = value;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getCylinderCapacity() {
+        return cylinderCapacity;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public double calculateTax() {
+        if (cylinderCapacity < 100) {
+            return value * 0.01;
+        } else if (cylinderCapacity >= 100 && cylinderCapacity <= 200) {
+            return value * 0.03;
+        } else {
+            return value * 0.05;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Nhập thông tin và tạo đối tượng xe1
+        System.out.print("Nhập thông tin xe1 (model, cylinderCapacity, value): ");
+        String model1 = scanner.next();
+        int cylinderCapacity1 = scanner.nextInt();
+        double value1 = scanner.nextDouble();
+        Vehicle xe1 = new Vehicle(model1, cylinderCapacity1, value1);
+
+        // Nhập thông tin và tạo đối tượng xe2
+        System.out.print("Nhập thông tin xe2 (model, cylinderCapacity, value): ");
+        String model2 = scanner.next();
+        int cylinderCapacity2 = scanner.nextInt();
+        double value2 = scanner.nextDouble();
+        Vehicle xe2 = new Vehicle(model2, cylinderCapacity2, value2);
+
+        // Nhập thông tin và tạo đối tượng xe3
+        System.out.print("Nhập thông tin xe3 (model, cylinderCapacity, value): ");
+        String model3 = scanner.next();
+        int cylinderCapacity3 = scanner.nextInt();
+        double value3 = scanner.nextDouble();
+        Vehicle xe3 = new Vehicle(model3, cylinderCapacity3, value3);
+
+        // Xuất bảng kê khai tiền thuế trước bạ của các xe
+        System.out.print("\nBảng kê khai tiền thuế trước bạ của các xe:");
+        System.out.printf("Xe1: %s - dung tích %dcc - trị giá %,.0f VND - tiền thuế trước bạ: %,.2f\n",
+                xe1.getModel(), xe1.getCylinderCapacity(), xe1.getValue(), xe1.calculateTax());
+        System.out.printf("Xe2: %s - dung tích %dcc - trị giá %,.0f VND - tiền thuế trước bạ: %,.2f\n",
+                xe2.getModel(), xe2.getCylinderCapacity(), xe2.getValue(), xe2.calculateTax());
+        System.out.printf("Xe3: %s - dung tích %dcc - trị giá %,.0f VND - tiền thuế trước bạ: %,.2f\n",
+                xe3.getModel(), xe3.getCylinderCapacity(), xe3.getValue(), xe3.calculateTax());
+
+        // Thoát chương trình
+        System.out.print("\nThoát chương trình");
+    }
+}
